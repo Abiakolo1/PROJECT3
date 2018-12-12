@@ -65,11 +65,11 @@ main:
         syscall #output the value of empty error message to console
         jr $ra #exit after output
     NonEmptyStringOuput:
-            li $s5, 0       #initialized inde
-            addi $t7, $s7, -1       #initialize j
-            la $s0, userStr      #string address
-            add $s0, $s0, $s6       #start number
-            add $s0,$s0, $t7        #add length -1 to the address(starts from the end)
+        la $s0, userStr #load address of userStr into register $s0
+        add $s0, $s0, $s6 #got the address of the start of the number
+        addi $sp, $sp, -4 #allocate space
+        sw $ra, 0($sp) #store return address
+        move $a0, $s0 #set address of start of number
             li $t2, 1       #initialized power of 36
             li $t9, 0       #initialized sum of decimal value
             li $s3, 36      #constant of 36
