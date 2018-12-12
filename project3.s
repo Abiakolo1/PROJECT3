@@ -70,9 +70,11 @@ main:
         addi $sp, $sp, -4 #allocate space
         sw $ra, 0($sp) #store return address
         move $a0, $s0 #set address of start of number
-            li $t2, 1       #initialized power of 36
-            li $t9, 0       #initialized sum of decimal value
-            li $s3, 36      #constant of 36
+        move $a2, $s7 #set length of number
+        jal convertChar #go to convertChar
+        move $s5, $v0 #move value of $v0 into $s5
+        li $v0, 1
+        move $a0, $s5 #move $s5 into arguement register #a0
     ConvertCharLoop:
             li $t0, -1      #initialized  to -1
             lb $s1, 0($s0)
