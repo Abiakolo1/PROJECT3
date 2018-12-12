@@ -55,11 +55,11 @@ main:
         ble $s7, $t7, OutputnotLong #checks if user input is greater than 4 go to outputnotlong to determine if there it is made of spaces
         li $v0, 4 #load value of string into v0
         la $a0, tooLongErrorMsg #load address of toolongerrormsg into a0 for output
-        syscall         #printed too long error for the input
-        jr $ra
+        syscall #output too long error for the input to console
+        jr $ra #exit after output
     OutputnotLong:
-            bne $s7, $zero, NonEmptyStringOuput   #if user input is empty, and
-            beq $t7, $t6, NonEmptyStringOuput     #if user input is a newline print empty error message
+        bne $s7, $zero, NonEmptyStringOuput #if length of the string is zero, go to label
+        beq $t7, $t6, NonEmptyStringOuput #if user input is a newline, and then end is reached and the string is empty, go to label
             li $v0, 4
             la $a0, EmptyErrorMsg
             syscall
