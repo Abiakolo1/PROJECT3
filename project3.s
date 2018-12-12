@@ -99,6 +99,11 @@ main:
     DecideNum:
         addi $s4, $s4, -1  #decrement length
         move $a0, $s4  #set arguments for MakePow
+        jal MakePow #jump to make pow
+        move $s1, $v0  # get registers s1 = 36 ^ (len-1)
+        lb $s5, 0($s0) #loads the first element of the array
+        move $a0, $s5 #moved register $s5 into $a0
+        jal CovertCharToNum #convert the character to a number
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
