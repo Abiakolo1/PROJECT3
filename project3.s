@@ -84,9 +84,11 @@ main:
         sw $ra, 0($sp)  #set return address
         sw $s0, 4($sp)  #set s0  = address of arr
         sw $s4, 8($sp)  #set s1  = length arr
-            blt $s1, $t5, NoConvertUpDigit     #if >= 65 and
-            bgt $s1, $t1, NoConvertUpDigit     #if <= 90
-            addi $t0, $s1, -55      #got decimal value
+        sw $s3, 12($sp)  #set s2  = first num
+        sw $s1, 16($sp)  #set s3  = power of 36
+        move $s0, $a0  #transfer arguement register $a0 which is the address of array into the saved register $s0
+        move $s4, $a2  #transfer arguement register $a0 which is the length of array into the saved register $s0
+        li $s5, 1 #in the base case
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
