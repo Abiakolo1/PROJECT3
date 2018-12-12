@@ -79,11 +79,11 @@ main:
         lw $ra, 0($sp)  #restore return address
         addi $sp, $sp, 4 #deallocate space
         jr $ra
-    ConvertCharLoop:
-            li $t0, -1      #initialized  to -1
-            lb $s1, 0($s0)
-            li $t5, 65      #a
-            li $t1, 90      #z
+    convertChar:
+        addi $sp, $sp, -20  #allocate space
+        sw $ra, 0($sp)  #set return address
+        sw $s0, 4($sp)  #set s0  = address of arr
+        sw $s4, 8($sp)  #set s1  = length arr
             blt $s1, $t5, NoConvertUpDigit     #if >= 65 and
             bgt $s1, $t1, NoConvertUpDigit     #if <= 90
             addi $t0, $s1, -55      #got decimal value
