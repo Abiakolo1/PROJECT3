@@ -39,11 +39,11 @@ main:
         syscall #output to console
         jr $ra #exit after output
     noCharError:
-        beq $t7, $t1, NoIncrement      #if character is not equal to a space, increment numchars
-        addi $s7, $s7, 1
+        beq $t7, $t1, NoIncrement #if the character is equal to a space, increment the number
+        addi $s7, $s7, 1 #increase numlength
     NoIncrement:
-        bne $t7, $t1, NoCount        #if space and
-        bne $s7, $0, NoCount         #if prevNum is equal to 0 then count space
+        bne $t7, $t1, NoCount #if current char is a space and
+        bne $s7, $zero, NoCount         #if prevNum is equal to 0 then count space
         addi $s6, $s6, 1
     NoCount:
         move $s0, $t7           #set prev char to current one
