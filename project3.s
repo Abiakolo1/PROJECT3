@@ -60,10 +60,10 @@ main:
     OutputnotLong:
         bne $s7, $zero, NonEmptyStringOuput #if length of the string is zero, go to label
         beq $t7, $t6, NonEmptyStringOuput #if user input is a newline, and then end is reached and the string is empty, go to label
-            li $v0, 4
-            la $a0, EmptyErrorMsg
-            syscall
-            jr $ra
+        li $v0, 4 #load value of string into register $v0
+        la $a0, EmptyErrorMsg #load value of empty error message into the arguement register $a0
+        syscall #output the value of empty error message to console
+        jr $ra #exit after output
     NonEmptyStringOuput:
             li $s5, 0       #initialized inde
             addi $t7, $s7, -1       #initialize j
