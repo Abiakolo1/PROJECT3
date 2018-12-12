@@ -104,6 +104,11 @@ main:
         lb $s5, 0($s0) #loads the first element of the array
         move $a0, $s5 #moved register $s5 into $a0
         jal CovertCharToNum #convert the character to a number
+        move $s5, $v0 #move $s5 into $v0
+        mul $s3, $s5, $s1
+        addi $s0, $s0, 1  #increment ptr to beginning of the array
+        move $a0, $s0  #set arguement for conversion
+        move $a2, $s4
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
