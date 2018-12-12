@@ -27,6 +27,11 @@ main:
         beq $t7, $t6, noCharError #if the character is not new line then print invalid, check if string is too long first before checking if there are invalid characters
         sub $s5, $t5, $s6 #s5 = i - num of spaces
         addi $s5, $s5, 1 #s5++ the index
+        li $t7, 4  #t1 = 4
+        ble $s5, $t7, LengthCheck #if the string is less than t7, check the length
+        li $v0, 4 #load message
+        la $a0, tooLongErrorMsg #load tooLong error message into register $a0
+        syscall #printed too long error for the input
         jr $ra
     noCharError:
         beq $t7, $t1, NoIncrement      #if character is not equal to a space, increment numchars
