@@ -33,6 +33,11 @@ main:
         la $a0, tooLongErrorMsg #load tooLong error message into register $a0
         syscall #printed too long error for the input
         jr $ra
+    LengthCheck:
+        li $v0, 4 #load message
+        la $a0, wrongCharErrorMsg #load wrong char message into register $a0
+        syscall #output to console
+        jr $ra #exit after output
     noCharError:
         beq $t7, $t1, NoIncrement      #if character is not equal to a space, increment numchars
         addi $s7, $s7, 1
