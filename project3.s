@@ -46,10 +46,10 @@ main:
         bne $s7, $zero, NoCount         #if prevNum is equal to 0 then count space
         addi $s6, $s6, 1
     NoCount:
-        move $s0, $t7           #set prev char to current one
-        addi $s5, $s5, 1        #incremented the address
-        addi $t5, $t5, 1        #incremented i
-        j loop
+        move $s0, $t7 #set previ char with current one
+        addi $s5, $s5, 1 #increment address of char
+        addi $t5, $t5, 1  #increment i
+        j loop #go to the loop with the next value
     breakloop:
         li $t7, 4
         ble $s7, $t7, OutputnotLong #checks if user input is greater than 4
