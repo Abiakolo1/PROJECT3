@@ -70,11 +70,15 @@ main:
         addi $sp, $sp, -4 #allocate space
         sw $ra, 0($sp) #store return address
         move $a0, $s0 #set address of start of number
-        move $a2, $s7 #set length of number
+        move $a2, $s7 #set length of string
         jal convertChar #go to convertChar
         move $s5, $v0 #move value of $v0 into $s5
         li $v0, 1
         move $a0, $s5 #move $s5 into arguement register #a0
+        syscall
+        lw $ra, 0($sp)  #restore return address
+        addi $sp, $sp, 4 #deallocate space
+        jr $ra
     ConvertCharLoop:
             li $t0, -1      #initialized  to -1
             lb $s1, 0($s0)
