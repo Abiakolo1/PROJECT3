@@ -94,6 +94,11 @@ main:
         move $a0, $t7 #set char to arg for CovertCharToNum function
         jal CovertCharToNum #go to convertchartonum
         move $t7, $v0  #get result
+        move $v0, $t7 #moves first element to $v0
+        j exitconvertChar #exitconvertchar is called
+    DecideNum:
+        addi $s4, $s4, -1  #decrement length
+        move $a0, $s4  #set arguments for MakePow
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
