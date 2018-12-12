@@ -50,11 +50,11 @@ main:
         addi $s5, $s5, 1 #increment address of char
         addi $t5, $t5, 1  #increment i
         j loop #go to the loop with the next value
-    breakloop:
-        li $t7, 4
-        ble $s7, $t7, OutputnotLong #checks if user input is greater than 4
-        li $v0, 4
-        la $a0, tooLongErrorMsg
+    breakLoop:
+        li $t7, 4 #load the value 4 into $t7
+        ble $s7, $t7, OutputnotLong #checks if user input is greater than 4 go to outputnotlong to determine if there it is made of spaces
+        li $v0, 4 #load value of string into v0
+        la $a0, tooLongErrorMsg #load address of toolongerrormsg into a0 for output
         syscall         #printed too long error for the input
         jr $ra
     OutputnotLong:
