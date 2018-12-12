@@ -22,11 +22,11 @@ main:
         beq $t7, $t6, breakLoop #when s6 contains a newline char, the end of the string has been reached and therfore breakLoop should be called
         beq $t7, $t1, noCharError #break if the character is a space and check its position in noCharError
         bne $s0, $t1, noCharError #go to noCharError if the previous char is equal to zero
-        beq $t7, $0, noCharError          #if the chLaracter is not null and
-        beq $t7, $t6, noCharError         #if the character is not new line then print invalid
-        li $v0, 4
-        la $a0, wrongCharErrorMsg
-        syscall         #print invalid spaces
+        beq $s7, $zero, noCharError #if the num of previously seen characters is not zero and
+        beq $t7, $zero, noCharError #if the chLaracter is not null and
+        beq $t7, $t6, noCharError #if the character is not new line then print invalid, check if string is too long first before checking if there are invalid characters
+        sub $s5, $t5, $s6 #s5 = i - num of spaces
+        addi $s5, $s5, 1 #s5++ the index
         jr $ra
     noCharError:
         beq $t7, $t1, NoIncrement      #if character is not equal to a space, increment numchars
