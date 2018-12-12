@@ -16,12 +16,12 @@ main:
     li $s7, 0       #initialized numofchracters
     li $t6, 0x0A    #new line here
     li $s6, 0       #num Spaces
+
     loop:
-        lb $t7, 0($s5) #got a character of the string
-        beq $t7, $t6, breakloop #break when newline
-        beq $t7, $t1, noCharError #if the character is not a space and
-        bne $s0, $t1, noCharError #if the previous character is a space and
-        beq $s7, $zero, noCharError          #if the num of previously seen characters is not zero and
+        lb $t7, 0($s5) #get each character of the string
+        beq $t7, $t6, breakLoop #when s6 contains a newline char, the end of the string has been reached and therfore breakLoop should be called
+        beq $t7, $t1, noCharError #break if the character is a space and check its position in noCharError
+        bne $s0, $t1, noCharError #go to noCharError if the previous char is equal to zero
         beq $t7, $0, noCharError          #if the chLaracter is not null and
         beq $t7, $t6, noCharError         #if the character is not new line then print invalid
         li $v0, 4
