@@ -89,6 +89,11 @@ main:
         move $s0, $a0  #transfer arguement register $a0 which is the address of array into the saved register $s0
         move $s4, $a2  #transfer arguement register $a0 which is the length of array into the saved register $s0
         li $s5, 1 #in the base case
+        bne $s4, $s5, DecideNum    #if length == 1 then
+        lb $t7, 0($s0) #loads the first element of the array
+        move $a0, $t7 #set char to arg for CovertCharToNum function
+        jal CovertCharToNum #go to convertchartonum
+        move $t7, $v0  #get result
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
