@@ -123,4 +123,8 @@ main:
         MakePow:
         addi $sp, $sp, -4 #allocate space
         sw $ra, 0($sp) #set return address
+        li $s5, 0 #load 0 zero into $s5
+        bne $a0, $s5, IsFirstChar
+        li $v0, 1
+        j exitPow
 
