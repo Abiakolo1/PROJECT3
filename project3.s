@@ -118,6 +118,11 @@ main:
         lw $s4, 8($sp)  #reset s1  = length arr
         lw $s3, 12($sp)  #reset s2  = first num
         lw $s1, 16($sp)  #set s3  = power of 36
+        addi $sp, $sp, 20  #deallocate space
+        jr $ra
+        MakePow:
+        addi $sp, $sp, -4 #allocate space
+        sw $ra, 0($sp) #set return address
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
