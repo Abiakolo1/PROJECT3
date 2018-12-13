@@ -162,4 +162,9 @@ main:
         move $v0, $a0
         jr $ra
     isConvertNum:
+        li $v0, 4    #throw error if character is not in any of the ranges
+        la $a0, wrongCharErrorMsg
+        syscall
+        li $v0, 10    #termination syscall
+        syscall #exit
 
