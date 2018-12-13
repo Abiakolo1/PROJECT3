@@ -137,5 +137,9 @@ main:
         lw $ra, 0($sp)  #restore return address
         addi $sp, $sp, 4 #deallocated space
         jr $ra
-        CovertCharToNum:
+    CovertCharToNum:
+        li $t5, 65
+        li $t1, 90 #convert character to digit
+        blt $a0, $t5, NoConvertUpDigit  #if char >= 65 and
+        bgt $a0, $t1, NoConvertUpDigit # char <= 90
 
