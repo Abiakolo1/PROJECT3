@@ -145,4 +145,9 @@ main:
         addi $a0, $a0, -55  #get the decimal value of the capital letter
         move $v0, $a0
         jr $ra
+    NoConvertUpDigit:
+        li $t5, 97   #load smallest ascii value for lowercase letters
+        li $t1, 122  #load largest ascii value for lowercase letters
+        blt $a0, $t5, NoConvertLowDigit #if char >= 97 and
+        bgt $a0, $t1, NoConvertLowDigit #char <= 122
 
