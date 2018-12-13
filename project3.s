@@ -109,6 +109,11 @@ main:
         addi $s0, $s0, 1  #increment ptr to beginning of the array
         move $a0, $s0  #set arguement for conversion
         move $a2, $s4
+        jal convertChar #jump to convert Char label
+        move $s5, $v0  #get conversion
+        add $v0, $s3, $s5  #return conversion + addition
+        exitconvertChar:
+        lw $ra, 0($sp)  #reset return address
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
