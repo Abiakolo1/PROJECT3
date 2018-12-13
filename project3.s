@@ -133,4 +133,9 @@ main:
         move $t7, $v0 #result in $v0 moved to $t7
         li $t5,36 #first number
         mul $v0, $t5, $t7 #takes the mult result and puts it into $v0
+    exitPow:
+        lw $ra, 0($sp)  #restore return address
+        addi $sp, $sp, 4 #deallocated space
+        jr $ra
+        CovertCharToNum:
 
