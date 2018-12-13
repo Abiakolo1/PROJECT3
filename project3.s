@@ -130,4 +130,7 @@ main:
     IsFirstChar:
         addi $a0, $a0, -1  #setting arg for recursion call
         jal MakePow
+        move $t7, $v0 #result in $v0 moved to $t7
+        li $t5,36 #first number
+        mul $v0, $t5, $t7 #takes the mult result and puts it into $v0
 
