@@ -148,11 +148,13 @@ main:
     ConvertLower:
         li $t5, 97   #load smallest ascii value for lowercase letters
         li $t1, 122  #load largest ascii value for lowercase letters
-        blt $a0, $t5, NoConvertLowDigit #if char >= 97 and
-        bgt $a0, $t1, NoConvertLowDigit #char <= 122
+        blt $a0, $t5, ConvertUpper #if char >= 97 and
+        bgt $a0, $t1, ConvertUpper  #char <= 122
         addi $a0, $a0, -87 #get the decimal value of the lowercase letter
         move $v0, $a0
         jr $ra
-    NoConvertLowDigit:
+    ConvertUpper:
         li $t5, 48 #load smallest ascii value for decimals
+        li $t1, 57 #load largest ascii value for decimals
+        blt $a0, $t5, isConvertNum    #if char >= 48 and
 
