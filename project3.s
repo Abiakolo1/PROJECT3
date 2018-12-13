@@ -114,6 +114,10 @@ main:
         add $v0, $s3, $s5  #return conversion + addition
         exitconvertChar:
         lw $ra, 0($sp)  #reset return address
+        lw $s0, 4($sp)  #reset s0  = addr of arr
+        lw $s4, 8($sp)  #reset s1  = length arr
+        lw $s3, 12($sp)  #reset s2  = first num
+        lw $s1, 16($sp)  #set s3  = power of 36
     NoConvertUpDigit:
                 li $t5, 97      #A
                 li $t1, 122     #Z
