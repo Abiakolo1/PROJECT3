@@ -123,34 +123,4 @@ main:
         MakePow:
         addi $sp, $sp, -4 #allocate space
         sw $ra, 0($sp) #set return address
-    NoConvertUpDigit:
-                li $t5, 97      #A
-                li $t1, 122     #Z
-                blt $s1, $t5, NoConvertCase    #if >= 97 and
-                bgt $s1, $t1, NoConvertCase     #if <= 122
-                addi $t0, $s1, -87      #got the decimal value of the capital letter
-    NoConvertCase:
-                li $t5, 48      #0
-                li $t1, 57      #9
-                blt $s1, $t5, NoConvert       #>= 48 and
-                bgt $s1, $t1, NoConvert       #<= 57
-                addi $t0, $s1, -48      #got the decimal value of the capital letter
-    NoConvert:
-                li $s4, -1      #initialized -1 in $s4
-                bne $t0, $s4, NoInvalidOutput #if $t0 is -1 then print wrongCharErrorMsg
-                li $v0, 4
-                la $a0, wrongCharErrorMsg
-                syscall
-                jr $ra
-    NoInvalidOutput:
-                mul $s2, $t0, $t2       #value = digit * powerof36
-                mul $t2, $t2, $s3       #powerofbase *= 36
-                add $t9, $t9, $s2       #sum  = value
-                addi $s5, $s5, 1        #increase  i
-                addi $t7, $t7, -1       #decremented j
-                addi $s0, $s0, -1       #incremented the address to get the next character
-                blt $s5, $s7, ConvertCharLoop
-                li $v0, 1
-                move $a0, $t9
-                syscall         #prints sum of the decimal value
-                jr $ra
+
