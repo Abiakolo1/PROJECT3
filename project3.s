@@ -140,12 +140,12 @@ main:
     CovertCharToNum:
         li $t5, 65
         li $t1, 90 #convert character to digit
-        blt $a0, $t5, NoConvertUpDigit  #if char >= 65 and
-        bgt $a0, $t1, NoConvertUpDigit # char <= 90
+        blt $a0, $t5, ConvertLower  #if char >= 65 and
+        bgt $a0, $t1, ConvertLower # char <= 90
         addi $a0, $a0, -55  #get the decimal value of the capital letter
         move $v0, $a0
         jr $ra
-    NoConvertUpDigit:
+    ConvertLower:
         li $t5, 97   #load smallest ascii value for lowercase letters
         li $t1, 122  #load largest ascii value for lowercase letters
         blt $a0, $t5, NoConvertLowDigit #if char >= 97 and
