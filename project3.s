@@ -142,4 +142,7 @@ main:
         li $t1, 90 #convert character to digit
         blt $a0, $t5, NoConvertUpDigit  #if char >= 65 and
         bgt $a0, $t1, NoConvertUpDigit # char <= 90
+        addi $a0, $a0, -55  #get the decimal value of the capital letter
+        move $v0, $a0
+        jr $ra
 
