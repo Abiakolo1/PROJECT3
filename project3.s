@@ -112,7 +112,7 @@ main:
         jal convertChar #jump to convert Char label
         move $s5, $v0  #get conversion
         add $v0, $s3, $s5  #return conversion + addition
-        exitconvertChar:
+    exitconvertChar:
         lw $ra, 0($sp)  #reset return address
         lw $s0, 4($sp)  #reset s0  = addr of arr
         lw $s4, 8($sp)  #reset s1  = length arr
@@ -120,11 +120,14 @@ main:
         lw $s1, 16($sp)  #set s3  = power of 36
         addi $sp, $sp, 20  #deallocate space
         jr $ra
-        MakePow:
+    MakePow:
         addi $sp, $sp, -4 #allocate space
         sw $ra, 0($sp) #set return address
         li $s5, 0 #load 0 zero into $s5
         bne $a0, $s5, IsFirstChar
         li $v0, 1
         j exitPow
+    IsFirstChar:
+        addi $a0, $a0, -1  #setting arg for recursion call
+        jal MakePow
 
