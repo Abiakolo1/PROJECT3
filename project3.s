@@ -157,4 +157,9 @@ main:
         li $t5, 48 #load smallest ascii value for decimals
         li $t1, 57 #load largest ascii value for decimals
         blt $a0, $t5, isConvertNum    #if char >= 48 and
+        bgt $a0, $t1, isConvertNum #char <= 57
+        addi $a0, $a0, -48 #get the decimal value of the character
+        move $v0, $a0
+        jr $ra
+    isConvertNum:
 
