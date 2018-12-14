@@ -99,7 +99,7 @@ main:
         move $a0, $t7 #set char to arg for CovertCharToNum function
         jal CovertCharToNum #go to convertchartonum
         move $t7, $v0  #get result
-        move $t7, $s5 #moves first element to $s5
+        move $s5, $t7 #moves first element to $s5
         j exitconvertChar #exitconvertchar is called
     DecideNum:
         addi $s4, $s4, -1  #decrement length
