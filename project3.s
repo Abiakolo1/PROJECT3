@@ -116,8 +116,9 @@ main:
         sw $s0, 0($sp)
         sw $s4, 4($sp)
         jal convertChar #jump to convert Char label
-        move $s5, $v0  #get conversion
-        add $v0, $s3, $s5  #return conversion + addition
+        lw $s5, 0($sp)
+        addi $sp, $sp, 4
+        add $s5, $s3, $s5  #return conversion res + first num and put the return value in $s5
     exitconvertChar:
         lw $ra, 0($sp)  #reset return address
         lw $s0, 4($sp)  #reset s0  = addr of arr
@@ -125,6 +126,8 @@ main:
         lw $s3, 12($sp)  #reset s2  = first num
         lw $s1, 16($sp)  #set s3  = power of 36
         addi $sp, $sp, 20  #deallocate space
+        addi $sp, $sp, -4
+        sw $s5, 0($sp)
         jr $ra
     MakePow:
         addi $sp, $sp, -4 #allocate space
