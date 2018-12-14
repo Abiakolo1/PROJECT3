@@ -112,8 +112,9 @@ main:
         move $s5, $v0 #move $s5 into $v0
         mul $s3, $s5, $s1
         addi $s0, $s0, 1  #increment ptr to beginning of the array
-        move $a0, $s0  #set arguement for conversion
-        move $a2, $s4
+        addi $sp, $sp, -8 #recursive case
+        sw $s0, 0($sp)
+        sw $s4, 4($sp)
         jal convertChar #jump to convert Char label
         move $s5, $v0  #get conversion
         add $v0, $s3, $s5  #return conversion + addition
