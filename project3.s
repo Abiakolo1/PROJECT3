@@ -69,10 +69,12 @@ main:
         add $s0, $s0, $s6 #got the address of the start of the number
         addi $sp, $sp, -4 #allocate space
         sw $ra, 0($sp) #store return address
-        move $a0, $s0 #set address of start of number
-        move $a2, $s7 #set length of string
+        addi $sp, $sp, -8
+        sw $s0, 0($sp)
+        sw $s7, 4($sp)
         jal convertChar #go to convertChar
-        move $s5, $v0 #move value of $v0 into $s5
+        lw $s5, 0($sp) #move value of $v0 into $s5
+        addi $sp, $sp, 4
         li $v0, 1
         move $a0, $s5 #move $s5 into arguement register #a0
         syscall
